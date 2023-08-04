@@ -1,0 +1,42 @@
+# General options
+BASE_OPTS:
+  MODEL: Extended_LTNL
+  EPOCHS: 20
+  N_WORKERS: 8
+  DEVICE: cuda
+  CK_EPOCHS_STEP: 5
+  VAL_EPOCHS_STEP: 5
+
+# Dataset options
+DATA_OPTS:
+  DATASET: /home/satudent/7. seminar
+  LOG_DIR: /home/satudent/7. seminar
+  BATCH_SIZE: 8 # X2 GPUS!
+  TRAIN_ALL: True
+
+# TRAINING OPTIONS
+TRAIN_OPTS:
+  LR: 0.001
+  LR_STEPS: {450: 0.000025, 650: 0.000015}
+  OPTIMIZER: Adam
+  DECAY: 0.0005 # 5e-4
+  SCHEDULER: None
+  CLIP_VALUE: 100
+
+# Model specific options
+MODEL_OPTS:
+  BACKBONE: resnet34
+  DISTANCE: cosine
+
+  OUT_DIM: 256
+  INPUT_WIDTH: 480
+  INPUT_HEIGHT: 270
+  MAX_SEQ_LEN: 1
+
+  # Ego crop size
+  CROP_HEIGHT: 90
+  CROP_WIDTH: 110
+
+  # If False use pre computed bert embeddings
+  COMPUTE_NL_EMBS: False
+  SEQ_POS_ENCODE: True
